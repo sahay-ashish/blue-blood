@@ -211,12 +211,3 @@ Enter E to search by customer email  \n\
             print("Choice not valid !!! exiting program!!!")
     except ValueError:
         print("please enter a valid choice")
-
-
-
-
-
-
-
-
-        
