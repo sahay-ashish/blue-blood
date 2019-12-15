@@ -1,4 +1,5 @@
 import os
+import sys
 import logo
 import logo1
 import mysql.connector
@@ -6,7 +7,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host = "localhost",
     user="root",
-    password="ashish@12",
+    password="123456",
     database="mydatabase"
     )
 
@@ -30,7 +31,10 @@ while choice != 5:
                    val = (c_name,c_bal,c_stat,c_add,c_email)
                    mycursor.execute(sql,val)
                    mydb.commit()
-                   print(mycursor.rowcount," row was inserted.")
+                   if mycursor.rowcount == 1:
+                       print("Record inserted, TABLE UPDATED SUCCESSFULLY.")
+                   else:
+                       print("Record not inserted, PLEASE CONTACT SUPPORT")
                 else:
                     print("This database does not exist")
                     print("Exiting application")
@@ -206,8 +210,11 @@ Enter E to search by customer email  \n\
                     wf.write("\n-----------------------------------------------------------------------------------------------------------------------------------\n")
                     print("File created")
             elif choice == 5:
+                print("Thanks for using DataManSys, see you soon, GOODBYE")
+                sys.exit()
                 break
         else:
             print("Choice not valid !!! exiting program!!!")
     except ValueError:
         print("please enter a valid choice")
+
